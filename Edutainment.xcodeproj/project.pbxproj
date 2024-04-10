@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		29A2E72A2BC3F092007580AF /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A2E7292BC3F092007580AF /* Questions.swift */; };
+		29A2E7302BC52202007580AF /* GameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29A2E72F2BC52202007580AF /* GameScreen.swift */; };
 		29AC8AC22BC0127B006BFDD8 /* EdutainmentApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AC8AC12BC0127B006BFDD8 /* EdutainmentApp.swift */; };
 		29AC8AC42BC0127B006BFDD8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29AC8AC32BC0127B006BFDD8 /* ContentView.swift */; };
 		29AC8AC62BC0127C006BFDD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29AC8AC52BC0127C006BFDD8 /* Assets.xcassets */; };
@@ -14,6 +16,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		29A2E7292BC3F092007580AF /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		29A2E72F2BC52202007580AF /* GameScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreen.swift; sourceTree = "<group>"; };
 		29AC8ABE2BC0127B006BFDD8 /* Edutainment.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Edutainment.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		29AC8AC12BC0127B006BFDD8 /* EdutainmentApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdutainmentApp.swift; sourceTree = "<group>"; };
 		29AC8AC32BC0127B006BFDD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +58,8 @@
 			children = (
 				29AC8AC12BC0127B006BFDD8 /* EdutainmentApp.swift */,
 				29AC8AC32BC0127B006BFDD8 /* ContentView.swift */,
+				29A2E72F2BC52202007580AF /* GameScreen.swift */,
+				29A2E7292BC3F092007580AF /* Questions.swift */,
 				29AC8AC52BC0127C006BFDD8 /* Assets.xcassets */,
 				29AC8AC72BC0127C006BFDD8 /* Edutainment.entitlements */,
 				29AC8AC82BC0127C006BFDD8 /* Preview Content */,
@@ -139,6 +145,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29A2E72A2BC3F092007580AF /* Questions.swift in Sources */,
+				29A2E7302BC52202007580AF /* GameScreen.swift in Sources */,
 				29AC8AC42BC0127B006BFDD8 /* ContentView.swift in Sources */,
 				29AC8AC22BC0127B006BFDD8 /* EdutainmentApp.swift in Sources */,
 			);
