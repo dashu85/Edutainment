@@ -30,12 +30,19 @@ struct ContentView: View {
                     Spacer()
                     
                     Section {
-                        Stepper("Let's play number   **\(chosenMultiplicator)**", value: $chosenMultiplicator, in: 1...12)
+                        Stepper("Let's play number", value: $chosenMultiplicator, in: 2...12)
                             .padding()
                     } header: {
                         Text("Which number do you want to play?")
                     }
                     .foregroundColor(.black)
+                    .cornerRadius(8)
+                    
+                    Text("\(chosenMultiplicator)")
+                        .padding()
+                        .foregroundColor(.black)
+                        .bold()
+                        .font(.system(size: CGFloat(10 * chosenMultiplicator)))
                     
                     Spacer()
                     
@@ -45,14 +52,15 @@ struct ContentView: View {
                                 Text("\(option)")
                             }
                         }
-                    }header: {
-                            Text("How many questions?")
-                            .padding()
-                            .foregroundStyle(.black)
-                        }
+                        .padding()
                         .pickerStyle(.segmented)
                         .background(Color(red: 0.992, green: 0.882, blue: 0))
-                        .foregroundColor(.white)
+                        .cornerRadius(8)
+                    }header: {
+                            Text("How many questions do you want to play?")
+                            .foregroundStyle(.white)
+                        }
+                       
                         
                         Spacer()
                         
@@ -62,12 +70,13 @@ struct ContentView: View {
                         } label: {
                             Text("START")
                                 .font(.largeTitle)
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .padding(20)
-                                .background(.green)
-                                .clipShape(RoundedRectangle(cornerRadius: 30))
+                                .background(Color(red: 0.992, green: 0.882, blue: 0))
+                                .clipShape(RoundedRectangle(cornerRadius: 10))
                     }
                     .navigationTitle("Edutainment")
+                    .foregroundColor(.black)
                 }
             }
         }

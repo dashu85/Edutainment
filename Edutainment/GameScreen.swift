@@ -49,6 +49,10 @@ struct GameScreen: View {
     
     @State private var answerGivenByUser: Int?
     
+    @State private var animationAmount = 1.0
+    @State var flipCorrect = false
+    @State var flipFalse = false
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -64,15 +68,28 @@ struct GameScreen: View {
                 
                 VStack {
                     VStack {
+                        
+                        Spacer()
+                        
                         HStack {
                             Spacer()
-                            Text("Correct: \(scoreCorrect)")
+                            Text("Correct: ")
+                            Text("\(scoreCorrect)")
+                                .rotationEffect(.degrees(flipCorrect ? 360 : 0), anchor: .center)
+                                                .animation(.easeInOut(duration: 0.5), value: scoreCorrect) // Animation added
+                                
                             Spacer()
-                            Text("False: \(scoreFalse)")
+                            
+                            Text("False: ")
+                            Text("\(scoreFalse)")
+                                .rotationEffect(.degrees(flipFalse ? 360 : 0), anchor: .center)
+                                                .animation(.easeInOut(duration: 0.5), value: scoreFalse)
                             Spacer()
                         }
                         .font(.title)
                         .foregroundStyle(.black)
+                        
+                        Spacer()
                         
                         // checking that the currentQuestion doesn't get higher than the numberOfQuestions
                         if currentQuestion < numberOfQuestions {
@@ -94,6 +111,8 @@ struct GameScreen: View {
                                             // Dismiss DetailView and go back to ContentView
                                             presentationMode.wrappedValue.dismiss()
                                         }
+                            .padding()
+                            .font(.largeTitle)
                         }
                         
                         Spacer()
@@ -101,8 +120,10 @@ struct GameScreen: View {
                     
                     VStack {
                         Spacer()
+                        Spacer()
+                        Spacer()
                         HStack {
-                            TextField("Enter an integer", text: Binding<String>(
+                            TextField("Enter your solution", text: Binding<String>(
                                 get: { self.answerGivenByUser.map { String($0) } ?? "" },
                                 set: { self.answerGivenByUser = Int($0) }
                             ))
@@ -116,26 +137,17 @@ struct GameScreen: View {
                             .onSubmit {
                                 self.answerGivenByUser = nil
                             }
-                            Button("Done") {
+                            Button("Submit") {
                                 checkAnswer(answerGivenByUser ?? 0)
                                 self.answerGivenByUser = nil
                             }
                             .padding()
                         }
-                        Spacer()
-                        Spacer()
-                        Spacer()
                     }
                 }
             }
         }
         .navigationTitle("Let's play")
-    }
-    
-    func printStatus() {
-        print(questions)
-        print(answers)
-        print(currentQuestion)
     }
     
     func checkAnswer(_ answer: Int?) {
@@ -146,11 +158,16 @@ struct GameScreen: View {
         }
         
         if answerGivenByUser == answers[currentQuestion] {
-            scoreCorrect += 1
+            withAnimation {
+                scoreCorrect += 1
+                flipCorrect.toggle()
+            }
         } else {
-            scoreFalse += 1
+            withAnimation {
+                scoreFalse += 1
+                flipFalse.toggle()
+            }
         }
-        print("answerGivenByUser: \(answerGivenByUser)")
         currentQuestion += 1
         
         if currentQuestion == numberOfQuestions {
